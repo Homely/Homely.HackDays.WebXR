@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Homely HackDays - Basic WebXR Demo - Step 2</title>
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+<!--     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script> -->
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item id="house" src="https://soutarm.github.io/HackDays/lowpoly_house/scene.gltf"></a-asset-item>
+        <img id="skymap" src="https://cdn.aframe.io/a-painter/images/sky.jpg" alt="" crossorigin />
+        <img id="grassmap" src="https://aframe.io/sample-assets/assets/images/terrain/grasslight-big.jpg" alt="" crossorigin />
+      </a-assets>
+<!--       <a-entity environment="preset: forest"></a-entity> -->
+      <a-entity particle-system="preset: snow; particleCount: 4000"></a-entity>
+      <a-entity id="sky" geometry="primitive:sphere; radius:30; phiLength:360; phiStart:0; thetaLength:90" material="shader:flat; side:back; height:2048; src:#skymap; width:2048"></a-entity>
+      <a-entity gltf-model="#house" position="0 0 -4" scale="0.01 0.01 0.01"></a-entity>
+      <a-sky color="#7EC0EE"></a-sky>
+      <a-sphere id="moon" position="12 12 -14" radius="1.25" color="#EEE" shadow="false"></a-sphere>
+      <a-plane id="ground" position="0 -0.2 -4" rotation="-90 0 0" width="64" height="64" color="#395D33" roughness="1.0" shadow material="src: #grassmap; color: #fafafa; metalness: .1; repeat: 40 40; roughness: 1"></a-plane>
+      <a-entity light="type: ambient; color: #BBE"></a-entity>
+      <a-entity light="type: directional; color: #EFF; intensity: 1.0; castShadow: true" position="10 11 -14"></a-entity>
+    </a-scene>
+  </body>
+</html>
